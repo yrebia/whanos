@@ -1,0 +1,13 @@
+FROM gcc:11.2
+
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /app
+
+ONBUILD COPY Makefile .
+
+ONBUILD RUN make
+
+RUN find . -type f ! -name 'compiled-app' -delete
+
+CMD ./compiled-app
