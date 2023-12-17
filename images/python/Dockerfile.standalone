@@ -1,11 +1,11 @@
-FROM python:3.10
+FROM python:3
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY ./whanos_example_apps/python-hello-world/requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY ./app ./app
+COPY ./whanos_example_apps/python-hello-world/app/ ./app
 
 CMD [ "python3", "-m" , "app"]

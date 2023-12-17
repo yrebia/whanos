@@ -1,4 +1,4 @@
-FROM esolang/befunge93
+FROM alpine:latest
 
 SHELL ["/bin/bash", "-c"]
 

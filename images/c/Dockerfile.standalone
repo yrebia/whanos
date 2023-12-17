@@ -4,9 +4,11 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /app
 
-COPY Makefile .
+COPY ../whanos_example_apps/c-hello-world/app/hello.c .
 
-COPY ./app ./app
+RUN ls -l /app
+
+COPY ./whanos_example_apps/c-hello-world/Makefile .
 
 RUN make
 

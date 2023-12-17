@@ -4,12 +4,13 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /app
 
-COPY package.json .
+COPY ./whanos_example_apps/js-hello-world/package.json .
+COPY ./whanos_example_apps/js-hello-world/package-lock.json .
 
-COPY package-lock.json .
-
+# Installez les dépendances avant de copier l'ensemble de l'application
 RUN ["npm", "install"]
 
-COPY app/ ./app/
+# Copiez l'ensemble de l'application
+COPY ./whanos_example_apps/js-hello-world/app/ ./app/
 
 CMD ["node", "."]

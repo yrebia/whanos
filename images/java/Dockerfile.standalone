@@ -1,15 +1,21 @@
 FROM maven:3.8.4-openjdk-17-slim
 
-SHELL ["/bin/bash", "-c"]
-
+# Créez un répertoire pour l'application
 WORKDIR /app
 
-COPY ./app/ ./app/
+# Copiez le fichier de configuration Maven pour utiliser /app comme répertoire de travail
+COPY ./whanos_example_apps/java-hello-world/app/pom.xml .
+
+# Copiez les sources de l'application
+COPY ./whanos_example_apps/java-hello-world/app/src ./src
 
 RUN mvn package -f app/pom.xml
 
-RUN mv app/target/app.jar .
+# Copiez le fichier JAR dans /app
+RUN cp target/app.jar /app
 
+# Supprimez les fichiers inutiles
 RUN find . -not -name app.jar -delete
 
-CMD java -jar app.jar
+# Spécifiez le chemin complet pour l'artefact JAR généré
+CMD java -jar /app/app.jar

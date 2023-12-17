@@ -4,6 +4,8 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /app
 
-COPY ./app/ ./app/
+# Copiez le fichier Befunge dans /app
+COPY ./whanos_example_apps/befunge-hello-world/app/main.bf .
 
-CMD ["/root/bef", "./app/main.bf"]
+# Spécifiez le chemin complet pour le fichier Befunge
+CMD ["/root/bef", "./main.bf"]
